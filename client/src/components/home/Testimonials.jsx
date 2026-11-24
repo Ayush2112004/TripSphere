@@ -7,8 +7,7 @@ const TESTIMONIALS = [
     trip: 'Santorini · May 2026',
     quote:
       '"Booking our Santorini flights and cliffside hotel together took under five minutes. The fare breakdown was completely transparent."',
-    avatar:
-      'https://lh3.googleusercontent.com/aida/ALJJyrDBMdHF8Z05fnJbFuesAhyfSGFcb1bva4tOWin9Hbec1U1anSdHzwEWmlNk0q2gfpTFj1JMiLrhD542QtBZx1jCyBbSDeV8a4niTqrshxHGvC3hfN4q7K8iYkp8tYDaQs-NcdPQkEz7N5F-ZmxMGu8zuxXnzRJZcUSIdwIc9H0aLSU_mkAPhjAa9BoJcA66YAT33hwXIBIlkJG8VeGDKd9To6h1chidrIu-wYumTVqQ4nte26inoAy5',
+    avatar: '/images/avatar-claire.jpg?v=2',
   },
   {
     id: 2,
@@ -16,8 +15,7 @@ const TESTIMONIALS = [
     trip: 'Kyoto & Tokyo · Apr 2026',
     quote:
       '"When our Tokyo flight schedule shifted, TripSphere support rebooked our connection before we even reached the airport."',
-    avatar:
-      'https://lh3.googleusercontent.com/aida/ALJJyrBvdduxe1hKmrMHwyxhAsfiefFKJfj_uMqPEh7sHK1nRb_hc_tlh4pF7vRCfF_QPzqr1EtZSutz-9cWMbsGNJ9qv5sAiwyoqwnW5wwG9rArx9VlmWyvR-mPBpVJXk9BI0t6xjmodtDUj5mwcMD9GuzanmYDNuAQ3E2lpPKLdWE6rBUSeumhlagI_orPDfxZllO_0-C8z1OCTLUU928U6-oJDOO8pSTcyIK9V3Sa9WZJnqyoYSVdSg5g',
+    avatar: '/images/avatar-marcus.jpg?v=2',
   },
   {
     id: 3,
@@ -25,8 +23,7 @@ const TESTIMONIALS = [
     trip: 'Amalfi Coast · Jun 2026',
     quote:
       '"Every hotel recommendation felt genuinely curated. The Amalfi Coast stay matched every photo and included late checkout."',
-    avatar:
-      'https://lh3.googleusercontent.com/aida/ALJJyrB7xphhPkkO7g3LClVO9I3tTAd59ObRIPk8n4M84FkUmOQKGq77HyQgiut2WAi_7eCwsuHR1a9iQryl8hMtA8oHaJoVNkcY9XobiuYZzQilPMXPdt50i45tm1rBhX0nU5uskRbG0qqlYCGFonQ7DWBCLzNsZU4_6o9-cczJoyi43MTLbbPKw5_dkGB6zkEx08HYNEBcbKYfFv3HgBH3in8W-Z6jf0reGkFN0Ould7vXZnbLg85G8g',
+    avatar: '/images/avatar-priya.jpg?v=2',
   },
 ];
 

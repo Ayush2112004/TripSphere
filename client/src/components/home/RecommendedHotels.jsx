@@ -9,8 +9,7 @@ const RECOMMENDED_HOTELS = [
     location: 'Uluwatu, Bali',
     features: 'Oceanfront Pool & Spa',
     price: 285,
-    image:
-      'https://lh3.googleusercontent.com/aida/ALJJyrCsOtAZoxRNbyreSaWNv4mYDq0gubEJKUncwxwOdfyF2BZ5lH3YVw_oqft8rZyUTghBDW3APpx6zznBX5HDsuggXK_oeN17RaJ6G8Xb5Y4noZTj2NlWBIzp8lMJnhV7mfG_WfHNXKrjqu3UV51-IIixDe2P-XfYeBAGuGBSw4fA2CsC7zdkZyCNNDKF3iY6b0SSDDz_qQ_ejzJl3ThO8Ldp-F778UbbWqYpyEUbryLU-HT99Q8',
+    image: '/images/hotel-bali.jpg?v=2',
     alt: 'Cliffside infinity pool resort in Uluwatu, Bali',
   },
   {
@@ -20,8 +19,7 @@ const RECOMMENDED_HOTELS = [
     location: 'Zermatt, Switzerland',
     features: 'Breakfast Included',
     price: 360,
-    image:
-      'https://lh3.googleusercontent.com/aida/ALJJyrACYLUn2xyyjRQ2vZRy8S4_jnvaavQ4eTTIT4mCOlbDMPeSwxjpT3uUeSCjJEQAOsu7X1i1uAbjBTtZaRDFhdh_zvFpTfypgvym2z3OhKeBC7wUtKE25ZkzW0q-lYDV9C_Dt8ODg5WE9jBwsZVv6WE23Bgq7Ifrx7Al-TZyYiRUT_l9POiBnpTaPh2QoMDCOdre2QqRCQoOFN01ibDHSTkCbym2K5oiFgrGzpXnkj0N-JOcB6A',
+    image: '/images/hotel-zermatt.jpg?v=2',
     alt: 'Modern alpine chalet hotel in Zermatt, Switzerland',
   },
   {
@@ -31,8 +29,7 @@ const RECOMMENDED_HOTELS = [
     location: 'Baa Atoll, Maldives',
     features: 'Private Lagoon Deck',
     price: 640,
-    image:
-      'https://lh3.googleusercontent.com/aida/ALJJyrAJmDRzj_dzFSlOBg_qvgqcO9DFaLMwrb5_8EaSryVstUlHDPvgWvvvwEj9BPsmd_PUxbAiPAlcn-P-Wt2D79xnLcDo8xaCsr-4EUcA4prKk7Gl6EDrvaD0VyDkegMQ6g6LALtkRBCUOjxMvbBhIYA9F4p_XuM108Y5UB9MQ1J4IYCQcbM-EpdDD0OGaXNhYPDe4O9pqydYyd9C4-wzfUY5DqQkdqei2Cz8OoRLD8Hp4MWwCnwC3G-gRQ',
+    image: '/images/hotel-maldives.jpg?v=2',
     alt: 'Overwater villa terrace in the Maldives',
   },
 ];

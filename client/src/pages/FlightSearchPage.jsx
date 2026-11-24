@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { flightService } from '../services/api';
 import { useBooking } from '../context/BookingContext';
+import { useAuth } from '../context/AuthContext';
 
 export default function FlightSearchPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
   const { startFlightBooking } = useBooking();
+  const { isAuthenticated } = useAuth();
 
   const [fromCity, setFromCity] = useState(searchParams.get('from') || 'New York (JFK)');
   const [toCity, setToCity] = useState(searchParams.get('to') || 'London (LHR)');
@@ -158,7 +160,16 @@ export default function FlightSearchPage() {
       departureDate,
       returnDate,
     });
-    navigate('/checkout');
+    if (!isAuthenticated) {
+      navigate('/login', {
+        state: {
+          from: { pathname: '/checkout' },
+          message: 'Please sign in or create an account to book your flight.',
+        },
+      });
+    } else {
+      navigate('/checkout');
+    }
   };
 
   const handleViewDetails = (id) => {

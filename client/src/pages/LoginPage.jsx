@@ -23,7 +23,7 @@ export default function LoginPage({ initialMode = 'login' }) {
   const { login, register } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || '/';
+  const from = location.state?.from?.pathname || location.state?.from || '/';
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
@@ -82,7 +82,7 @@ export default function LoginPage({ initialMode = 'login' }) {
       {/* Full-Bleed Travel Coastline Background */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <img
-          src="https://lh3.googleusercontent.com/aida/ALJJyrAgiRALg10NnwH0ywQm5jwycVFn9hMRS9i1KJRnPO0cAJvRK6J514iB6buinH8aOWU_cSB9O7HOvqYQecJlKcOyHnIx_zA4gn9aCc-SqbNZnoENjstJSX0DBpEBHzsojB3WoY1fYMoulwac3Jgy-PfmIcOPDkJV6MgPQ84FMDhk2M3jb6Yxw___4sJgzzYVmSKgD2DyUj9qBevO82Hq_Q-EJ_Ce5BdZwLs18v4uL47lQeH9d5cFMSEUpRVxDu7OEAw"
+          src="/images/auth-bg.jpg?v=2"
           alt="TripSphere Coastline Background"
           className="w-full h-full object-cover object-center"
         />
@@ -139,6 +139,14 @@ export default function LoginPage({ initialMode = 'login' }) {
           >
             {mode === 'login' ? 'Login Form' : 'Sign Up Form'}
           </h1>
+
+          {/* Login required notice banner */}
+          {location.state?.message && !error && (
+            <div className="p-3 rounded-md bg-light-primary-container/20 border border-light-primary-container/40 text-light-on-primary text-body-sm font-label flex items-center gap-2 shadow-sm">
+              <span className="material-symbols-outlined text-title-md text-light-on-primary">lock</span>
+              <span>{location.state.message}</span>
+            </div>
+          )}
 
           {/* Minimal Login / Sign Up Switcher Tabs */}
           <div

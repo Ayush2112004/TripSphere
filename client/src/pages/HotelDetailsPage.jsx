@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { hotelService } from '../services/api';
 import { useBooking } from '../context/BookingContext';
+import { useAuth } from '../context/AuthContext';
 
 export default function HotelDetailsPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { startHotelBooking } = useBooking();
+  const { isAuthenticated } = useAuth();
 
   const [hotel, setHotel] = useState(null);
   const [selectedRoom, setSelectedRoom] = useState(null);
@@ -37,8 +39,8 @@ export default function HotelDetailsPage() {
           reviewCount: 142,
           pricePerNight: 285,
           images: [
-            'https://lh3.googleusercontent.com/aida/ALJJyrCsOtAZoxRNbyreSaWNv4mYDq0gubEJKUncwxwOdfyF2BZ5lH3YVw_oqft8rZyUTghBDW3APpx6zznBX5HDsuggXK_oeN17RaJ6G8Xb5Y4noZTj2NlWBIzp8lMJnhV7mfG_WfHNXKrjqu3UV51-IIixDe2P-XfYeBAGuGBSw4fA2CsC7zdkZyCNNDKF3iY6b0SSDDz_qQ_ejzJl3ThO8Ldp-F778UbbWqYpyEUbryLU-HT99Q8',
-            'https://lh3.googleusercontent.com/aida/ALJJyrACYLUn2xyyjRQ2vZRy8S4_jnvaavQ4eTTIT4mCOlbDMPeSwxjpT3uUeSCjJEQAOsu7X1i1uAbjBTtZaRDFhdh_zvFpTfypgvym2z3OhKeBC7wUtKE25ZkzW0q-lYDV9C_Dt8ODg5WE9jBwsZVv6WE23Bgq7Ifrx7Al-TZyYiRUT_l9POiBnpTaPh2QoMDCOdre2QqRCQoOFN01ibDHSTkCbym2K5oiFgrGzpXnkj0N-JOcB6A',
+            '/images/hotel-bali.jpg',
+            '/images/hotel-zermatt.jpg',
           ],
           amenities: [
             'Oceanfront Infinity Pool & Spa',
@@ -80,7 +82,16 @@ export default function HotelDetailsPage() {
   const handleBook = (room) => {
     if (hotel) {
       startHotelBooking(hotel, room || selectedRoom);
-      navigate('/checkout');
+      if (!isAuthenticated) {
+        navigate('/login', {
+          state: {
+            from: { pathname: '/checkout' },
+            message: 'Please sign in or create an account to book your hotel reservation.',
+          },
+        });
+      } else {
+        navigate('/checkout');
+      }
     }
   };
 
@@ -151,7 +162,7 @@ export default function HotelDetailsPage() {
             className="w-full h-1/2 object-cover rounded-lg"
           />
           <img
-            src="https://lh3.googleusercontent.com/aida/ALJJyrAJmDRzj_dzFSlOBg_qvgqcO9DFaLMwrb5_8EaSryVstUlHDPvgWvvvwEj9BPsmd_PUxbAiPAlcn-P-Wt2D79xnLcDo8xaCsr-4EUcA4prKk7Gl6EDrvaD0VyDkegMQ6g6LALtkRBCUOjxMvbBhIYA9F4p_XuM108Y5UB9MQ1J4IYCQcbM-EpdDD0OGaXNhYPDe4O9pqydYyd9C4-wzfUY5DqQkdqei2Cz8OoRLD8Hp4MWwCnwC3G-gRQ"
+            src="/images/hotel-maldives.jpg"
             alt="Resort terrace"
             className="w-full h-1/2 object-cover rounded-lg"
           />

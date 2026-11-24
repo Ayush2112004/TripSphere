@@ -190,7 +190,7 @@ export const seedData = async () => {
       reviewCount: 142,
       pricePerNight: 285,
       images: [
-        'https://lh3.googleusercontent.com/aida/ALJJyrCsOtAZoxRNbyreSaWNv4mYDq0gubEJKUncwxwOdfyF2BZ5lH3YVw_oqft8rZyUTghBDW3APpx6zznBX5HDsuggXK_oeN17RaJ6G8Xb5Y4noZTj2NlWBIzp8lMJnhV7mfG_WfHNXKrjqu3UV51-IIixDe2P-XfYeBAGuGBSw4fA2CsC7zdkZyCNNDKF3iY6b0SSDDz_qQ_ejzJl3ThO8Ldp-F778UbbWqYpyEUbryLU-HT99Q8',
+        '/images/hotel-bali.jpg',
       ],
       amenities: [
         'Oceanfront Infinity Pool & Spa',
@@ -236,7 +236,7 @@ export const seedData = async () => {
       reviewCount: 118,
       pricePerNight: 360,
       images: [
-        'https://lh3.googleusercontent.com/aida/ALJJyrACYLUn2xyyjRQ2vZRy8S4_jnvaavQ4eTTIT4mCOlbDMPeSwxjpT3uUeSCjJEQAOsu7X1i1uAbjBTtZaRDFhdh_zvFpTfypgvym2z3OhKeBC7wUtKE25ZkzW0q-lYDV9C_Dt8ODg5WE9jBwsZVv6WE23Bgq7Ifrx7Al-TZyYiRUT_l9POiBnpTaPh2QoMDCOdre2QqRCQoOFN01ibDHSTkCbym2K5oiFgrGzpXnkj0N-JOcB6A',
+        '/images/hotel-zermatt.jpg',
       ],
       amenities: [
         'Matterhorn Mountain Views',
@@ -282,7 +282,7 @@ export const seedData = async () => {
       reviewCount: 88,
       pricePerNight: 640,
       images: [
-        'https://lh3.googleusercontent.com/aida/ALJJyrAJmDRzj_dzFSlOBg_qvgqcO9DFaLMwrb5_8EaSryVstUlHDPvgWvvvwEj9BPsmd_PUxbAiPAlcn-P-Wt2D79xnLcDo8xaCsr-4EUcA4prKk7Gl6EDrvaD0VyDkegMQ6g6LALtkRBCUOjxMvbBhIYA9F4p_XuM108Y5UB9MQ1J4IYCQcbM-EpdDD0OGaXNhYPDe4O9pqydYyd9C4-wzfUY5DqQkdqei2Cz8OoRLD8Hp4MWwCnwC3G-gRQ',
+        '/images/hotel-maldives.jpg',
       ],
       amenities: [
         'Private Lagoon Deck with Water Slide',
@@ -318,7 +318,7 @@ export const seedData = async () => {
       reviewCount: 97,
       pricePerNight: 510,
       images: [
-        'https://lh3.googleusercontent.com/aida/ALJJyrAK9a3ElWi1HHBJHJhEQ6KiIAVgz-6lLLWGMI3o2mVIKoPbmBkhqDgMrroJTnOhBoHFAe2hyEngxKcCYoMW1HeqMytwjd6PiRqke5i9p_8WXlv4vibgZrrTwCzxh-IJFLQPr_DUQB5a_-FFixWoDPTtzpJID-zrVwSvDTmeMsRE-ofz802MO9zjIkH4bYJYETI3ldopSR3rjQYwf7_Io2hbCAgzIq2AKiQCCgEDp6GwxR8Di7iAsngvNw',
+        '/images/santorini.jpg',
       ],
       amenities: [
         'Caldera View Infinity Pool',
@@ -350,8 +350,7 @@ export const seedData = async () => {
       durationDays: 7,
       durationNights: 6,
       pricePerPerson: 1490,
-      image:
-        'https://lh3.googleusercontent.com/aida/ALJJyrCG7Kk1gsgkNHZI_lOLEtonz4lUsn4tfhfIz1Sl7QkyCQftJtN6NGp7AkAsnyjm3nlByKHyRwbAgFBA_F5OT5TusDtjwepnPb-VOTnIGqGqXmxOMV66uduY6vzu5w9PStcl098GKubwocHiJc3Vr-0XlrixeBwWaCaQhQQ7_hQsSXvKaxHrkBFV8AJ_o5SurVIRZvhAOrII_JvHsRW4cDXarbQOGwrIa5hcbmLtNre1TrjnRTphlxpZdx_0Qw',
+      image: '/images/swiss-alps.jpg',
       overview:
         'Experience the pinnacle of European rail romance with 6 nights traversing Zurich, Lucerne, Interlaken, and Zermatt. Glide through breathtaking glaciers aboard the famous Glacier Express with first-class tickets and handpicked stays.',
       inclusions: [
@@ -382,8 +381,7 @@ export const seedData = async () => {
       durationDays: 6,
       durationNights: 5,
       pricePerPerson: 1250,
-      image:
-        'https://lh3.googleusercontent.com/aida/ALJJyrAK9a3ElWi1HHBJHJhEQ6KiIAVgz-6lLLWGMI3o2mVIKoPbmBkhqDgMrroJTnOhBoHFAe2hyEngxKcCYoMW1HeqMytwjd6PiRqke5i9p_8WXlv4vibgZrrTwCzxh-IJFLQPr_DUQB5a_-FFixWoDPTtzpJID-zrVwSvDTmeMsRE-ofz802MO9zjIkH4bYJYETI3ldopSR3rjQYwf7_Io2hbCAgzIq2AKiQCCgEDp6GwxR8Di7iAsngvNw',
+      image: '/images/santorini.jpg',
       overview:
         'Unwind along the sun-bleached cliffs of Oia and the golden shores of the Aegean with luxury caldera stays, sunset catamaran cruises, and authentic Greek gastronomy.',
       inclusions: [

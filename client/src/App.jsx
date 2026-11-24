@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { BookingProvider } from './context/BookingContext';
 import MainLayout from './layouts/MainLayout';
@@ -21,8 +21,10 @@ import ProfilePage from './pages/ProfilePage';
 import AdminDashboardPage from './pages/AdminDashboardPage';
 
 // Protected Route Component
-const ProtectedRoute = ({ children }) => {
+const ProtectedRoute = ({ children, message = 'Please sign in to proceed with your booking.' }) => {
   const { isAuthenticated, loading } = useAuth();
+  const location = useLocation();
+
   if (loading) {
     return (
       <div className="py-section text-center">
@@ -32,7 +34,11 @@ const ProtectedRoute = ({ children }) => {
       </div>
     );
   }
-  return isAuthenticated ? children : <Navigate to="/login" replace />;
+  return isAuthenticated ? (
+    children
+  ) : (
+    <Navigate to="/login" state={{ from: location, message }} replace />
+  );
 };
 
 export default function App() {
@@ -53,9 +59,23 @@ export default function App() {
               <Route path="register" element={<RegisterPage />} />
               <Route path="forgot-password" element={<ForgotPasswordPage />} />
 
-              {/* Checkout & Payment Flows */}
-              <Route path="checkout" element={<CheckoutPage />} />
-              <Route path="payment" element={<PaymentPage />} />
+              {/* Checkout & Payment Flows (Protected: requires login to book) */}
+              <Route
+                path="checkout"
+                element={
+                  <ProtectedRoute message="Please sign in or create an account to proceed with your booking.">
+                    <CheckoutPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="payment"
+                element={
+                  <ProtectedRoute message="Please sign in to proceed with your payment.">
+                    <PaymentPage />
+                  </ProtectedRoute>
+                }
+              />
 
               {/* Protected User Routes */}
               <Route

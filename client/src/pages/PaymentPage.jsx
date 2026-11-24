@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { useNavigate, useSearchParams, Link } from 'react-router-dom';
 import { paymentService } from '../services/api';
+import { useAuth } from '../context/AuthContext';
 
 export default function PaymentPage() {
-  const [searchParams] = useSearchParams();
+  const searchParams = useSearchParams()[0];
   const navigate = useNavigate();
+  const { user, isAuthenticated } = useAuth();
 
   const bookingId = searchParams.get('bookingId') || 'mock-booking';
   const amount = searchParams.get('amount') || '534';
 
   const [cardData, setCardData] = useState({
-    cardholderName: 'Claire Bennett',
+    cardholderName: user?.name || 'Claire Bennett',
     cardNumber: '4242 4242 4242 4242',
     expiry: '12/28',
     cvc: '123',
@@ -28,6 +30,17 @@ export default function PaymentPage() {
   const handlePay = async (e) => {
     e.preventDefault();
     setError('');
+
+    if (!isAuthenticated) {
+      navigate('/login', {
+        state: {
+          from: { pathname: '/payment', search: `?bookingId=${bookingId}&amount=${amount}` },
+          message: 'Please sign in or create an account to process payment.',
+        },
+      });
+      return;
+    }
+
     setLoading(true);
 
     try {

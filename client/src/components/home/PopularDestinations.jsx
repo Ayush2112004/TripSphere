@@ -9,8 +9,7 @@ const DESTINATIONS = [
     price: 545,
     rating: 5,
     duration: '4 Nights · Greece',
-    image:
-      'https://lh3.googleusercontent.com/aida/ALJJyrAK9a3ElWi1HHBJHJhEQ6KiIAVgz-6lLLWGMI3o2mVIKoPbmBkhqDgMrroJTnOhBoHFAe2hyEngxKcCYoMW1HeqMytwjd6PiRqke5i9p_8WXlv4vibgZrrTwCzxh-IJFLQPr_DUQB5a_-FFixWoDPTtzpJID-zrVwSvDTmeMsRE-ofz802MO9zjIkH4bYJYETI3ldopSR3rjQYwf7_Io2hbCAgzIq2AKiQCCgEDp6GwxR8Di7iAsngvNw',
+    image: '/images/santorini.jpg?v=2',
     alt: 'Whitewashed cliffside villas in Santorini, Greece',
   },
   {
@@ -20,8 +19,7 @@ const DESTINATIONS = [
     price: 780,
     rating: 5,
     duration: '5 Nights · Japan',
-    image:
-      'https://lh3.googleusercontent.com/aida/ALJJyrAjWsU64SytwnbEIr8KRJDF7YYv-umdA0mdruIdxKiPttR60klp1eKyIAVBSgqFr_DaoMpZ0wtcHFJSlM3x3s4i9ht8rlVJlOHQ7Bj0w5uQw4CY7BqdkLm28YeMIQf2ssMdpMK5_Yv32RDmoxillf3_dmwVxsvfdSZDgjnEn079vAFVP5nkSV7CwQCDpEZuA3FHcXLxQdBsVORyDW_uvjeZ-6WD97Y3CMWDu-KLAlu6ennRoE8',
+    image: '/images/kyoto.jpg?v=2',
     alt: 'Historic wooden pagoda with cherry blossoms in Kyoto, Japan',
   },
   {
@@ -31,8 +29,7 @@ const DESTINATIONS = [
     price: 620,
     rating: 5,
     duration: '3 Nights · Italy',
-    image:
-      'https://lh3.googleusercontent.com/aida/ALJJyrAd4SeQxiucN4kcgaPw-wS6PRz4GXUaf8jLLxsaHcerGeiEMcbHfpZk-iUB7YmneDI8hYn_CNCtNJY0a6hJdIquTK6qiZkOe4Yp8jr3D2HmSBmkdz6DZ3pxSZef_3_UsM-RdIUkJ8muZUiYLVCV9bXE8Pgx3FaX54O9BG1q-oq235L4xx4LVtEg0C8vAL0JNRfAem3BnxYAEPh2xBLLN7gDd8Awe2QC3XVeX45rXiMFJW2OFLGq',
+    image: '/images/amalfi.jpg?v=2',
     alt: 'Positano cliffside village on the Amalfi Coast, Italy',
   },
   {
@@ -42,8 +39,7 @@ const DESTINATIONS = [
     price: 510,
     rating: 5,
     duration: '3 Nights · France',
-    image:
-      'https://lh3.googleusercontent.com/aida/ALJJyrDJSzQTTb1RzzUtAjdqXgN6FWzplTiV4CMo7voBF3ypHqciNjM3_SCLlnbOosfR-t-p2Kl3QI0cjp7u0yYrlTfqtS-A6yh5QQ_OapM1eSAPOjkgtElyyX1BdZKBWbr2n046WEcBQIlRZLDh_84XYMOUgV9DUa0Wm7gRijEHh1zVSfpwqUia1wKNdpDP47DDJvlco5Q0InLyaiaVjyG-2aMw7I85_mUGkxoCNMi7pv8m6-hbPA',
+    image: '/images/paris.jpg?v=2',
     alt: 'Eiffel Tower rising above Parisian rooftops, France',
   },
 ];

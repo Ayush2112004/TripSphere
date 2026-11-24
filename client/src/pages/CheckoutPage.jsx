@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useBooking } from '../context/BookingContext';
 import { useAuth } from '../context/AuthContext';
@@ -35,12 +35,23 @@ export default function CheckoutPage() {
   };
 
   const [formData, setFormData] = useState({
-    fullName: user?.name || 'Claire Bennett',
-    email: user?.email || 'traveler@tripsphere.travel',
+    fullName: user?.name || '',
+    email: user?.email || '',
     phone: user?.phone || '+1 (555) 234-5678',
     passportNumber: 'U9812401',
     specialRequests: 'Window seat preferred',
   });
+
+  useEffect(() => {
+    if (user) {
+      setFormData((prev) => ({
+        ...prev,
+        fullName: prev.fullName || user.name || '',
+        email: prev.email || user.email || '',
+        phone: prev.phone || user.phone || '+1 (555) 234-5678',
+      }));
+    }
+  }, [user]);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -76,6 +87,17 @@ export default function CheckoutPage() {
   const handleProceedToPayment = async (e) => {
     e.preventDefault();
     setError('');
+
+    if (!isAuthenticated) {
+      navigate('/login', {
+        state: {
+          from: { pathname: '/checkout' },
+          message: 'Please sign in or create an account to complete your booking.',
+        },
+      });
+      return;
+    }
+
     setLoading(true);
 
     try {

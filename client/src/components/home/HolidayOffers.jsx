@@ -1,10 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useBooking } from '../../context/BookingContext';
+import { useAuth } from '../../context/AuthContext';
 
 export default function HolidayOffers() {
   const navigate = useNavigate();
   const { startHolidayBooking } = useBooking();
+  const { isAuthenticated } = useAuth();
 
   const handleBookFeaturedPackage = () => {
     startHolidayBooking({
@@ -15,8 +17,7 @@ export default function HolidayOffers() {
       durationDays: 7,
       durationNights: 6,
       pricePerPerson: 1490,
-      image:
-        'https://lh3.googleusercontent.com/aida/ALJJyrCG7Kk1gsgkNHZI_lOLEtonz4lUsn4tfhfIz1Sl7QkyCQftJtN6NGp7AkAsnyjm3nlByKHyRwbAgFBA_F5OT5TusDtjwepnPb-VOTnIGqGqXmxOMV66uduY6vzu5w9PStcl098GKubwocHiJc3Vr-0XlrixeBwWaCaQhQQ7_hQsSXvKaxHrkBFV8AJ_o5SurVIRZvhAOrII_JvHsRW4cDXarbQOGwrIa5hcbmLtNre1TrjnRTphlxpZdx_0Qw',
+      image: '/images/swiss-alps.jpg?v=2',
       highlights: [
         'First-class Glacier Express scenic rail pass',
         '6 nights 4-star boutique hotel accommodations',
@@ -24,7 +25,16 @@ export default function HolidayOffers() {
         'Panoramic excursions to Matterhorn & Lake Lucerne',
       ],
     });
-    navigate('/checkout');
+    if (!isAuthenticated) {
+      navigate('/login', {
+        state: {
+          from: { pathname: '/checkout' },
+          message: 'Please sign in or create an account to book your holiday package.',
+        },
+      });
+    } else {
+      navigate('/checkout');
+    }
   };
 
   const handleApplyPromo = (code) => {
@@ -37,7 +47,7 @@ export default function HolidayOffers() {
         {/* Featured Holiday Package */}
         <article className="lg:col-span-7 bg-light-surface border border-light-outline-variant rounded-lg overflow-hidden grid grid-cols-1 md:grid-cols-2 shadow-sm">
           <img
-            src="https://lh3.googleusercontent.com/aida/ALJJyrCG7Kk1gsgkNHZI_lOLEtonz4lUsn4tfhfIz1Sl7QkyCQftJtN6NGp7AkAsnyjm3nlByKHyRwbAgFBA_F5OT5TusDtjwepnPb-VOTnIGqGqXmxOMV66uduY6vzu5w9PStcl098GKubwocHiJc3Vr-0XlrixeBwWaCaQhQQ7_hQsSXvKaxHrkBFV8AJ_o5SurVIRZvhAOrII_JvHsRW4cDXarbQOGwrIa5hcbmLtNre1TrjnRTphlxpZdx_0Qw"
+            src="/images/swiss-alps.jpg?v=2"
             alt="Scenic panoramic train crossing a viaduct in the Swiss Alps"
             className="w-full h-64 md:h-full object-cover"
           />

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useBooking } from '../../context/BookingContext';
+import { useAuth } from '../../context/AuthContext';
 
 const FLIGHT_DEALS = [
   {
@@ -53,6 +54,7 @@ const FLIGHT_DEALS = [
 export default function FlightDeals() {
   const navigate = useNavigate();
   const { startFlightBooking } = useBooking();
+  const { isAuthenticated } = useAuth();
 
   const handleSelectFlight = (deal) => {
     // Start checkout or detail flow
@@ -70,7 +72,16 @@ export default function FlightDeals() {
       price: deal.price,
       travelClass: 'Economy',
     });
-    navigate('/checkout');
+    if (!isAuthenticated) {
+      navigate('/login', {
+        state: {
+          from: { pathname: '/checkout' },
+          message: 'Please sign in or create an account to book this flight deal.',
+        },
+      });
+    } else {
+      navigate('/checkout');
+    }
   };
 
   return (

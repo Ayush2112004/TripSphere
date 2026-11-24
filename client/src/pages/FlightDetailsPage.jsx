@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { flightService } from '../services/api';
 import { useBooking } from '../context/BookingContext';
+import { useAuth } from '../context/AuthContext';
 
 export default function FlightDetailsPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { startFlightBooking } = useBooking();
+  const { isAuthenticated } = useAuth();
 
   const [flight, setFlight] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -51,7 +53,16 @@ export default function FlightDetailsPage() {
   const handleBook = () => {
     if (flight) {
       startFlightBooking(flight);
-      navigate('/checkout');
+      if (!isAuthenticated) {
+        navigate('/login', {
+          state: {
+            from: { pathname: '/checkout' },
+            message: 'Please sign in or create an account to book your flight.',
+          },
+        });
+      } else {
+        navigate('/checkout');
+      }
     }
   };
 

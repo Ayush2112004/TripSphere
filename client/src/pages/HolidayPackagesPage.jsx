@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { holidayService } from '../services/api';
 import { useBooking } from '../context/BookingContext';
+import { useAuth } from '../context/AuthContext';
 
 export default function HolidayPackagesPage() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const { startHolidayBooking } = useBooking();
+  const { isAuthenticated } = useAuth();
 
   const [packages, setPackages] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -22,8 +24,7 @@ export default function HolidayPackagesPage() {
       durationDays: 7,
       durationNights: 6,
       pricePerPerson: 1490,
-      image:
-        'https://lh3.googleusercontent.com/aida/ALJJyrCG7Kk1gsgkNHZI_lOLEtonz4lUsn4tfhfIz1Sl7QkyCQftJtN6NGp7AkAsnyjm3nlByKHyRwbAgFBA_F5OT5TusDtjwepnPb-VOTnIGqGqXmxOMV66uduY6vzu5w9PStcl098GKubwocHiJc3Vr-0XlrixeBwWaCaQhQQ7_hQsSXvKaxHrkBFV8AJ_o5SurVIRZvhAOrII_JvHsRW4cDXarbQOGwrIa5hcbmLtNre1TrjnRTphlxpZdx_0Qw',
+      image: '/images/swiss-alps.jpg',
       overview:
         '6 nights across Zurich, Lucerne, Interlaken, and Zermatt with first-class Glacier Express rail passes, daily alpine breakfast, and mountain excursions.',
       inclusions: [
@@ -42,8 +43,7 @@ export default function HolidayPackagesPage() {
       durationDays: 6,
       durationNights: 5,
       pricePerPerson: 1250,
-      image:
-        'https://lh3.googleusercontent.com/aida/ALJJyrAK9a3ElWi1HHBJHJhEQ6KiIAVgz-6lLLWGMI3o2mVIKoPbmBkhqDgMrroJTnOhBoHFAe2hyEngxKcCYoMW1HeqMytwjd6PiRqke5i9p_8WXlv4vibgZrrTwCzxh-IJFLQPr_DUQB5a_-FFixWoDPTtzpJID-zrVwSvDTmeMsRE-ofz802MO9zjIkH4bYJYETI3ldopSR3rjQYwf7_Io2hbCAgzIq2AKiQCCgEDp6GwxR8Di7iAsngvNw',
+      image: '/images/santorini.jpg',
       overview:
         'Unwind along the sun-bleached cliffs of Oia with luxury caldera cave suites, sunset catamaran sailing cruises, and volcanic wine tastings.',
       inclusions: [
@@ -62,8 +62,7 @@ export default function HolidayPackagesPage() {
       durationDays: 8,
       durationNights: 7,
       pricePerPerson: 1850,
-      image:
-        'https://lh3.googleusercontent.com/aida/ALJJyrAjWsU64SytwnbEIr8KRJDF7YYv-umdA0mdruIdxKiPttR60klp1eKyIAVBSgqFr_DaoMpZ0wtcHFJSlM3x3s4i9ht8rlVJlOHQ7Bj0w5uQw4CY7BqdkLm28YeMIQf2ssMdpMK5_Yv32RDmoxillf3_dmwVxsvfdSZDgjnEn079vAFVP5nkSV7CwQCDpEZuA3FHcXLxQdBsVORyDW_uvjeZ-6WD97Y3CMWDu-KLAlu6ennRoE8',
+      image: '/images/kyoto.jpg',
       overview:
         'Historic wooden pagodas, serene bamboo groves, bullet train rail journeys, and authentic tea ceremony masterclasses.',
       inclusions: [
@@ -98,7 +97,16 @@ export default function HolidayPackagesPage() {
 
   const handleBook = (pkg) => {
     startHolidayBooking(pkg);
-    navigate('/checkout');
+    if (!isAuthenticated) {
+      navigate('/login', {
+        state: {
+          from: { pathname: '/checkout' },
+          message: 'Please sign in or create an account to book this holiday package.',
+        },
+      });
+    } else {
+      navigate('/checkout');
+    }
   };
 
   return (
