@@ -64,3 +64,28 @@ jobs:
           cat server/backend.log
           exit 1
 
+  build-image:
+    needs: [frontend,backend]
+    name: build docker image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: set up docker
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build backend image
+        uses: docker/build-push-action@v6
+        with:
+          context: ./server
+          push: false
+          tags: tripsphere-backend:latest
+
+      - name: Build frontend image
+        uses: docker/build-push-action@v6
+        with:
+          context: ./client
+          push: false
+          tags: tripsphere-frontend:latest
+
