@@ -1,0 +1,16 @@
+services:
+  backend:
+    image: backend-image:latest
+    container_name: backend-container
+    env_file:
+      - ./server/.env
+    expose:
+      - "5000"
+  frontend:
+    image: frontend-image
+    container_name: frontend-container
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
