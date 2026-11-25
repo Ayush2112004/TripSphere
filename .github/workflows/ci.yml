@@ -82,15 +82,15 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./server
-          push: false
-          tags: tripsphere-backend:latest
+          push: true
+          tags: ghcr.io/ayush2112004/tripsphere-backend:latest
 
       - name: Build frontend image
         uses: docker/build-push-action@v6
         with:
           context: ./client
-          push: false
-          tags: tripsphere-frontend:latest
+          push: true
+          tags: ghcr.io/ayush2112004/tripsphere-frontend:latest
 
       - name: Login to GHCR
         uses: docker/login-action@v3
