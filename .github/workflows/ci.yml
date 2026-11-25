@@ -39,7 +39,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
         working-directory: ./server
+      - name: Run ESLint
+        run: npm run lint
+        working-directory: ./server
 
+      - name: Run backend tests
+        run: npm test
+        working-directory: ./server
       - name : start backend
         run: npm start > backend.log 2>&1 &
         working-directory: ./server
