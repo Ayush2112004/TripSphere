@@ -98,6 +98,13 @@ jobs:
           context: ./client
           push: true
           tags: ghcr.io/ayush2112004/tripsphere-frontend:latest
+  deploy:
+    needs: [build-image]
+    uses: ./.github/workflows/cd.yml
+    secrets: inherit
+
+
+
 
       
 

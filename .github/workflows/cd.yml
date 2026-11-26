@@ -1,0 +1,23 @@
+name: TripSphere-cd
+on:
+  workflow_call:
+  
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Connect to EC2
+        uses: appleboy/ssh-action@v1 
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            whoami
+            hostame
+
+
+    
