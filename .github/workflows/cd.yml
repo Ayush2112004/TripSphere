@@ -6,19 +6,24 @@ jobs:
   deployment:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
 
       - name: Connect to EC2
         uses: appleboy/ssh-action@v1 
+        env:
+          GHCR_PAT: ${{ secrets.GHCR_PAT }}
         with:
+          envs: GHCR_PAT
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             cd /home/ubuntu/TripSphere
-            whoami
-            hostname
+            git pull origin main
+            echo "$GHCR_PAT" | docker login ghcr.io -u Ayush2112004 --password-stdin
+            docker compose pull
+            docker compose up -d
+            docker compose ps
+
 
 
     
