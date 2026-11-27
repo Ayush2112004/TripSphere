@@ -21,27 +21,42 @@ jobs:
             set -e
             : "${IMAGE_TAG:?IMAGE_TAG was not provided}"
             cd /home/ubuntu/TripSphere
+            PREVIOUS_TAG=$(docker inspect backend-container \
+            --format='{{.Config.Image}}' | awk -F: '{print $NF}')
+
+            echo "Previous deployed version: $PREVIOUS_TAG"
             git pull origin main
             echo "$GHCR_PAT" | docker login ghcr.io -u Ayush2112004 --password-stdin
             docker compose pull
             docker compose up -d
-              echo "Checking backend health..."
-
+            echo "Checking backend health..."
+            HEALTHY=false
             for i in {1..15}; do
               if docker compose exec -T backend curl -fsS http://localhost:5000/api/health; then
                 echo "Backend is healthy!"
+                HEALTHY=true
                 break
               fi
-
-              if [ "$i" -eq 15 ]; then
-                echo "Backend health check failed!"
-                docker compose logs --tail=50 backend
-                exit 1
-              fi
-
               echo "Waiting for backend..."
               sleep 2
             done
+            if [ "$HEALTHY" = false ]; then
+              echo "Backend Check Failed"
+
+              if [ -z "$PREVIOUS_TAG" ]; then
+                echo "ERROR: No previous deployed version found. Cannot rollback."
+                echo "Deployment failed!"
+                exit 1
+              fi
+
+              echo "Rolling Back to previous Image"
+              export IMAGE_TAG="$PREVIOUS_TAG"
+              docker compose pull
+              docker compose up -d
+              echo "Rollback completed"
+              docker compose ps
+              exit 1
+            fi
             docker compose ps
 
 
