@@ -25,6 +25,23 @@ jobs:
             echo "$GHCR_PAT" | docker login ghcr.io -u Ayush2112004 --password-stdin
             docker compose pull
             docker compose up -d
+              echo "Checking backend health..."
+
+            for i in {1..15}; do
+              if docker compose exec -T backend curl -fsS http://localhost:5000/api/health; then
+                echo "Backend is healthy!"
+                break
+              fi
+
+              if [ "$i" -eq 15 ]; then
+                echo "Backend health check failed!"
+                docker compose logs --tail=50 backend
+                exit 1
+              fi
+
+              echo "Waiting for backend..."
+              sleep 2
+            done
             docker compose ps
 
 
