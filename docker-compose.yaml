@@ -1,13 +1,13 @@
 services:
   backend:
-    image: ghcr.io/ayush2112004/tripsphere-backend:latest
+    image: ghcr.io/ayush2112004/tripsphere-backend:${IMAGE_TAG:?IMAGE_TAG is required}
     container_name: backend-container
     env_file:
       - ./server/.env
     expose:
       - "5000"
   frontend:
-    image: ghcr.io/ayush2112004/tripsphere-frontend:latest
+    image: ghcr.io/ayush2112004/tripsphere-frontend:${IMAGE_TAG:?IMAGE_TAG is required}
     container_name: frontend-container
     ports:
       - "80:80"
